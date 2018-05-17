@@ -1,0 +1,9 @@
+Package: com.trustcircle.gamehub_tweak
+Name: gamehub_tweak
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: Trust Circle
+Author: Trust Circle
+Section: Tweaks
