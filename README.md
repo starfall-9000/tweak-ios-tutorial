@@ -23,3 +23,7 @@
 `$THEOS/bin/nic.pl`
 
 `choose iphone/tweak`
+
+* compile project:
+
+`make`
