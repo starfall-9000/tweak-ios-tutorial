@@ -14,6 +14,8 @@
 
 * hook by Logos: http://iphonedevwiki.net/index.php/Logos#File_Extensions_for_Logos (Logos file)
 
+* write control file: http://www.debian.org/doc/debian-policy/ch-controlfields.html (custom for cydia info)
+
 ### command
 
 * init project:
