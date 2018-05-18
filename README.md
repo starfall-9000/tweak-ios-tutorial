@@ -27,3 +27,7 @@
 * compile project:
 
 `make`
+
+* package project:
+
+`make package`
