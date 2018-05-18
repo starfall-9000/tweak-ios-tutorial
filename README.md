@@ -8,6 +8,8 @@
 
 * write tweak app
 
+* write make file: http://www.gnu.org/software/make/manual/html_node/Makefiles.html
+
 ### command
 
 * init project:
