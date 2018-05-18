@@ -32,3 +32,42 @@ the generation of a class list and an automatic constructor.
 // Always make sure you clean up after yourself; Not doing so could have grave consequences!
 %end
 */
+
+#ifndef kCFCoreFoundationVersionNumber_iOS_8_0
+#define kCFCoreFoundationVersionNumber_iOS_8_0 1140.10
+#endif
+
+%hook AppDelegate
+
+%ctor {
+  // Need to call %init explicitly!
+  %init(_ungrouped);
+}
+
+/*
+%ctor {
+  %init;
+  if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_7_0 && kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_8_0) %init(iOS7Hook);
+  if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_8_0) %init(iOS8Hook);
+  MSHookFunction(
+    (void *)&AudioServicesPlaySystemSound,
+    (void *)&replaced_AudioServicesPlaySystemSound,
+    (void **)&original_AudioServicesPlaySystemSound
+  );
+}
+*/
+
+%new
+- (void)namespaceNewMethod {
+  NSLog(@"We’ve added a new method to SpringBoard.");
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  NSLog(@"hook in App Delegate.");
+  [self namespaceNewMethod];
+  %log;
+  
+  %orig;
+}
+
+%end
