@@ -37,25 +37,23 @@ the generation of a class list and an automatic constructor.
 #define kCFCoreFoundationVersionNumber_iOS_8_0 1140.10
 #endif
 
+//%ctor {
+//  // Need to call %init explicitly!
+//  %init(_ungrouped);
+//}
+
+//%ctor {
+//  %init;
+//  if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_7_0 && //kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_8_0) %init(iOS7Hook);
+//  if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_8_0) %init(iOS8Hook);
+//  MSHookFunction(
+//    (void *)&AudioServicesPlaySystemSound,
+//    (void *)&replaced_AudioServicesPlaySystemSound,
+//    (void **)&original_AudioServicesPlaySystemSound
+//  );
+//}
+
 %hook AppDelegate
-
-%ctor {
-  // Need to call %init explicitly!
-  %init(_ungrouped);
-}
-
-/*
-%ctor {
-  %init;
-  if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_7_0 && kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_8_0) %init(iOS7Hook);
-  if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_8_0) %init(iOS8Hook);
-  MSHookFunction(
-    (void *)&AudioServicesPlaySystemSound,
-    (void *)&replaced_AudioServicesPlaySystemSound,
-    (void **)&original_AudioServicesPlaySystemSound
-  );
-}
-*/
 
 %new
 - (void)namespaceNewMethod {
@@ -64,10 +62,10 @@ the generation of a class list and an automatic constructor.
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   NSLog(@"hook in App Delegate.");
-  [self namespaceNewMethod];
+  // [self namespaceNewMethod];
   %log;
   
-  %orig;
+  return %orig;
 }
 
 %end
