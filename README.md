@@ -31,3 +31,7 @@
 * package project:
 
 `make package`
+
+* clean project:
+
+`make clean && rm -rf packages`
