@@ -35,3 +35,15 @@
 * clean project:
 
 `make clean && rm -rf packages`
+
+* install package:
+
+`make package install`
+
+or:
+
+`scp packages/com.trustcircle.gamehub-tweak_0.0.1-2+debug_iphoneos-arm.deb root@192.168.1.34:~`
+
+`ssh root@192.168.1.34`
+
+`dpkg -i com.trustcircle.gamehub-tweak_0.0.1-2+debug_iphoneos-arm.deb`
